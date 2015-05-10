@@ -3,22 +3,19 @@
   "version": "0.0.1",
   "description": "An example module to illustrate the usage of a package.json",
   "author": "Lukas Graessle",
-  "contributors": [{
-    "name": "Foo Bar",
-    "email": "foo.bar@example.com"
-  }],
-
-  "scripts": {},
-
-  "keywords": [
-
+  "contributors": [
+    {
+      "name": "Lukas Graessle",
+      "email": "lukas.graessle@web.de"
+    }
   ],
+  "scripts": {},
+  "keywords": [],
   "dependencies": {
-
+    "jquery": "^2.1.4"
   },
   "devDependencies": {
     "http-server": "^0.8.0"
   },
-
   "license": "MIT"
 }
