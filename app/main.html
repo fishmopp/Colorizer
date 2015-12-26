@@ -1,21 +1,31 @@
-<h1>Drachen Konfigurator</h1>
+<link rel="stylesheet" href="../css/main.css">
+<div class="center">
 
-<div id="drachen_div"><canvas id="drachen">Your browser does not support the HTML5 canvas tag.</canvas></div>
+    <a class="forkMeOnGithub" href="https://github.com/Pandaros/Konfigurator"><img src="../pic/forkMeOnGitub.png" alt="Fork me on GitHub"></a>
 
-<div style="margin: 20px;">
-    <h2>Aktuell gewählte Farbe: <span id="aktFarbe" style="background-color: #ff0000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></h2>
+    <h1 id="konfigurator">Drachen Colorizer</h1>
 
-    <h2>&nbsp;</h2>
+    <div id="drachen_div">
+        <canvas id="drachen">Your browser does not support the HTML5 canvas tag.</canvas>
+    </div>
+    <div style="text-align: center">
+        <button class="btn download" onclick="downloadImage()">Download</button>
+        <p class="showOnIOS">Download is not available</p>
+    </div>
+
+    <h2>Aktuell gewählte Farbe: <span class="actColor">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    </h2>
+
+    <div id="farben_div">
+        <canvas id="farben">Your browser does not support the HTML5 canvas tag.</canvas>
+    </div>
 </div>
-
-<div id="farben_div"><canvas id="farben">Your browser does not support the HTML5 canvas tag.</canvas></div>
-
-<p style="margin-top: 20px;">Die ausgesuchte Konfiguration ist mit einem Rechtsklick auf den Drachen auf Ihrem PC speicherbar.</p>
-
 <script src="../node_modules/jquery/dist/jquery.min.js" type="text/javascript"></script>
-<script src="../js/konfigurator.js" type="text/javascript"></script>
+<script src="../node_modules/filesaver.js/FileSaver.min.js" type="text/javascript"></script>
+<script src="../node_modules/blueimp-canvas-to-blob/js/canvas-to-blob.min.js" type="text/javascript"></script>
+<script src="../js/colorizer.js" type="text/javascript"></script>
 
 <script type="text/javascript">
-    konfigurator.start("../pic/Smithi_pro_draufsicht_2.png", "../pic/Farben_Porche.png");
+    colorizer.start("../pic/Smithi_pro_draufsicht.png", "../pic/Farben_Porche.png");
 </script>
 

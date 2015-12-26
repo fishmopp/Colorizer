@@ -1,21 +1,20 @@
+var colorizer = function () {
 
-var konfigurator = function(){
     var imageDrachen;
     var imageFarben;
     var neueFarbe = [255, 0, 0];
 
-    function startKonfigurator (drachenSrc, farbenSrc) {
-
+    function startKonfigurator(drachenSrc, farbenSrc) {
         var contextDrachen = document.getElementById("drachen").getContext("2d");
         imageDrachen = new Image();
-        /* Hier die URL vom Bild des Drachens einf�gen*/
+        /* Hier die URL vom Bild des Drachens einfuegen*/
         imageDrachen.src = drachenSrc;
         imageDrachen.onload = imageLoad("drachen", contextDrachen, imageDrachen);
 
 
         var contextFarben = document.getElementById("farben").getContext("2d");
         imageFarben = new Image();
-        /* Hier die URL vom Bild der Drachenfraben einf�gen*/
+        /* Hier die URL vom Bild der Drachenfraben einfuegen*/
         imageFarben.src = farbenSrc;
         imageFarben.onload = imageLoad("farben", contextFarben, imageFarben);
 
@@ -77,7 +76,7 @@ var konfigurator = function(){
                 neueFarbe[0] = myImgData.data[index];
                 neueFarbe[1] = myImgData.data[index + 1];
                 neueFarbe[2] = myImgData.data[index + 2];
-                $('#aktFarbe').css("background-color", "rgb(" + neueFarbe[0] + "," + neueFarbe[1] + "," + neueFarbe[2] + ")");
+                $('.actColor').css("background-color", "rgb(" + neueFarbe[0] + "," + neueFarbe[1] + "," + neueFarbe[2] + ")");
             }
         }
     });
@@ -98,8 +97,8 @@ var konfigurator = function(){
             clean(context);
             context.save();
 
-            /*Fl�che f�llen
-             * Wenn auf einen schwarzen Bereich geklickt wurde wird fill4 nicht ausgef�hrt.
+            /*Flaeche fuellen
+             * Wenn auf einen schwarzen Bereich geklickt wurde wird fill4 nicht ausgefuehrt.
              */
             var alteFarbe = [myImgData.data[index], myImgData.data[index + 1], myImgData.data[index + 2]];
             if (!farbenVergleich(alteFarbe, neueFarbe) && !farbenVergleich(alteFarbe, [0, 0, 0])) {
@@ -143,7 +142,7 @@ var konfigurator = function(){
     }
 
     /*
-     Um die Position eines Objektes auf der Seite finden zu k�nnen.
+     Um die Position eines Objektes auf der Seite finden zu koennen.
      */
     function findPos(obj) {
         var curleft = 0, curtop = 0;
@@ -156,8 +155,48 @@ var konfigurator = function(){
         }
         return undefined;
     }
+
     return {
         start: startKonfigurator
-    }
+    };
 }();
 
+function downloadImage() {
+    var canvas =document.getElementById("drachen");
+    var ctx = canvas.getContext("2d");
+    var donwloadCanvas = document.createElement("canvas");
+    donwloadCanvas.width = canvas.width;
+    donwloadCanvas.height = canvas.height;
+    var donwloadCanvasCtx = donwloadCanvas.getContext("2d");
+
+    transparentToWhite();
+
+    donwloadCanvas.toBlob(function (blob) {
+        saveAs(blob, "Smithi_pro.png");
+    });
+
+    function transparentToWhite() {
+        var image = ctx.getImageData(0, 0, ctx.canvas.width, ctx.canvas.height);
+        var imageData = image.data;
+
+        for (var i = 3; i < imageData.length; i += 4) {
+            if (imageData[i] === 0) {
+                imageData[i - 3] = 255;
+                imageData[i - 2] = 255;
+                imageData[i - 1] = 255;
+                imageData[i] = 255;
+            }
+        }
+
+        donwloadCanvasCtx.putImageData(image, 0, 0);
+    }
+
+}
+
+
+(function(){
+    if(/(iphone|ipad)/gi.test(navigator.userAgent)){
+        $('.download').css("display", "none");
+        $('.showOnIOS').removeClass( "showOnIOS" )
+    }
+})();

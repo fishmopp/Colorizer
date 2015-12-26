@@ -1,7 +1,7 @@
 {
-  "name": "Kite-Configurator",
+  "name": "Colorizer",
   "version": "0.0.1",
-  "description": "An example module to illustrate the usage of a package.json",
+  "description": "An example site to show the usage of the Colorizer",
   "author": "Lukas Graessle",
   "contributors": [
     {
@@ -9,9 +9,13 @@
       "email": "lukas.graessle@web.de"
     }
   ],
-  "scripts": {},
-  "keywords": [],
+  "scripts": {
+    "start": "http-server -p 8080"
+  },
+  "keywords": ["Colorizer"],
   "dependencies": {
+    "blueimp-canvas-to-blob": "^2.2.4",
+    "filesaver.js": "^0.2.0",
     "jquery": "^2.1.4"
   },
   "devDependencies": {
