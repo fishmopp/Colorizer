@@ -10,6 +10,10 @@ that require custom colors: Bags, garments, ...
   
 The example application runs now under 127.0.0.1:8080/app/main.html
 
+## Demo
+
+[Demo](http://pandaros.github.io/Colorizer/)
+
 ## In use by
 [![Spiederkites](pic/spiderkites_logo.jpg "Spiderkites")](http://spiderkites.com)
 
