@@ -34,7 +34,7 @@ div .btn.download {
 
 .center {
     position: relative;
-    text-align: left;
+    text-align: center;
     margin: 0 auto;
 }
 
@@ -46,6 +46,6 @@ div .btn.download {
 }
 
 .forkMeOnGithub img {
-    width: 90px;
+    width: 180px;
 
 }
