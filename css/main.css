@@ -1,4 +1,4 @@
-.btn {
+div .btn.download {
     background-color: #44c767;
     -moz-border-radius: 9px;
     -webkit-border-radius: 9px;
@@ -11,11 +11,9 @@
     margin: 35px 0;
     padding: 7px 37px;
     text-decoration: none;
-    text-shadow: 0px 1px 0px #2f6627;
+    text-shadow: 0 1px 0 #2f6627;
     font-size: 30px;
-
 }
-
 .showOnIOS{
     display: none;
 }
@@ -37,7 +35,6 @@
 .center {
     position: relative;
     text-align: left;
-    width: 800px;
     margin: 0 auto;
 }
 
@@ -49,5 +46,6 @@
 }
 
 .forkMeOnGithub img {
-    width: 120px;
+    width: 90px;
+
 }

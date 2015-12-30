@@ -5,12 +5,12 @@ var colorizer = function () {
     var neueFarbe = [255, 0, 0];
 
     function startKonfigurator(drachenSrc, farbenSrc) {
+
         var contextDrachen = document.getElementById("drachen").getContext("2d");
         imageDrachen = new Image();
         /* Hier die URL vom Bild des Drachens einfuegen*/
         imageDrachen.src = drachenSrc;
         imageDrachen.onload = imageLoad("drachen", contextDrachen, imageDrachen);
-
 
         var contextFarben = document.getElementById("farben").getContext("2d");
         imageFarben = new Image();
@@ -20,27 +20,30 @@ var colorizer = function () {
 
         function imageLoad(pic, context, image) {
             return function () {
-
                 var skalierung = document.getElementById(pic + "_div").offsetWidth / image.width;
 
                 if (skalierung < 1) {
-                    document.getElementById(pic).width = image.width * skalierung;
-                    document.getElementById(pic).height = image.height * skalierung;
-                    context.drawImage(image, 0, 0, image.width * skalierung, image.height * skalierung);
+                    if(skalierung < 0.5){
+                        $( "#colorizer" ).remove();
+                        $("#removeColorizer").append("<p>We are sorry, there is not enough room for the Colorize</p>")
+                    }else{
+                        document.getElementById(pic).width = image.width * skalierung;
+                        document.getElementById(pic).height = image.height * skalierung;
+                        context.drawImage(image, 0, 0, image.width * skalierung, image.height * skalierung);
+                    }
+
                 } else {
                     document.getElementById(pic).width = image.width;
                     document.getElementById(pic).height = image.height;
                     context.drawImage(image, 0, 0);
                 }
                 if (pic === "drachen") {
-                    blackWhite();
+                    blackWhite(context);
                 }
             };
         }
 
-        function blackWhite() {
-
-            var contextDrachen = document.getElementById("drachen").getContext("2d");
+        function blackWhite(contextDrachen) {
             var image = contextDrachen.getImageData(0, 0, contextDrachen.canvas.width, contextDrachen.canvas.height);
             var imageData = image.data;
             for (var i = 0; i < imageData.length; i += 4) {
@@ -172,7 +175,8 @@ function downloadImage() {
     transparentToWhite();
 
     donwloadCanvas.toBlob(function (blob) {
-        saveAs(blob, "Smithi_pro.png");
+
+        saveAs(blob, "Smithi_pro.jpeg");
     });
 
     function transparentToWhite() {
@@ -193,10 +197,10 @@ function downloadImage() {
 
 }
 
-
 (function(){
     if(/(iphone|ipad)/gi.test(navigator.userAgent)){
         $('.download').css("display", "none");
         $('.showOnIOS').removeClass( "showOnIOS" )
     }
 })();
+

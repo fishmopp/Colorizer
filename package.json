@@ -12,9 +12,10 @@
   "scripts": {
     "start": "http-server -p 8080"
   },
-  "keywords": ["Colorizer"],
+  "keywords": [
+    "Colorizer"
+  ],
   "dependencies": {
-    "blueimp-canvas-to-blob": "^2.2.4",
     "filesaver.js": "^0.2.0",
     "jquery": "^2.1.4"
   },
